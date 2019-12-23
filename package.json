@@ -1,0 +1,32 @@
+{
+  "name": "vchat-backend",
+  "version": "1.0.0",
+  "description": "the serverless backend for the vchat boilerplate",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "connect-mongo": "^3.0.0",
+    "cors": "^2.8.5",
+    "dialogflow": "^0.14.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.7.3",
+    "morgan": "^1.9.1",
+    "serverless-http": "^2.3.0",
+    "structjson": "^1.0.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
