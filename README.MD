@@ -12,7 +12,7 @@ Deployed Site: 'insert here'
 
 ## Purpose 
 
-'the backend of the Vchat boilerplate for building chatbots'
+the backend of the Vchat boilerplate for building chatbots
 
 ## Technologies used
 

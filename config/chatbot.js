@@ -125,7 +125,7 @@ const createSession = async (userId) => {
 
 const saveUserMessage = async (userText) => {
   const message = await Message.create({
-    speaker: 'user',
+    speaker: 'me',
     msg: userText
   })
   return message
@@ -133,8 +133,8 @@ const saveUserMessage = async (userText) => {
 
 const saveBotMessage = async (botText, botQuickReplies, botCards) => {
   const message = new Message({
-    speaker: 'vchat',
-    msg: botText ? botText : null,
+    speaker: 'the MRS',
+    msg: botText,
     cards: botCards ? [] : null,
     quickReplies: botQuickReplies ? [] : null
   })
@@ -157,8 +157,8 @@ const getChatHistory = async (userId) => {
     if (!sessionHistory) {
       return false       
     } else {
-      await sessionHistory.update({ $inc: { sessions: 1 }})
-      sessionHistory.save
+      await sessionHistory.updateOne({ $inc: { sessions: 1 }})
+      sessionHistory.save()
       return sessionHistory
     }
   } catch (error) {
@@ -175,4 +175,3 @@ module.exports = {
     saveUserMessage,
     saveBotMessage
 }
-
