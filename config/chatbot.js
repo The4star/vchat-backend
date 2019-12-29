@@ -37,7 +37,7 @@ const textQuery = async (text, userId, parameters = {}) => {
     };
 
     let response = await sessionClient.detectIntent(request);
-    response = await self.handleAction(response, userId)
+    await self.handleAction(response, userId)
 
     result = response[0].queryResult; 
 
@@ -62,7 +62,7 @@ const eventQuery = async (event, userId, parameters = {}) => {
     };
 
     let response = await sessionClient.detectIntent(request);
-    response = await self.handleAction(response, userId)
+    await self.handleAction(response, userId)
 
     result = response[0].queryResult; 
 
@@ -86,14 +86,11 @@ const handleAction = async (response, userId) => {
         const userMessage = await self.saveUserMessage(userText);
         sessionHistory.messages.push(userMessage);
       }
-      // save bot messages
-      const splitMessages = botText.split(".", 5)
-      splitMessages.map(async splitMessage => {
-        if (splitMessage.length  > 1) {
-          const botMessage = await self.saveBotMessage(splitMessage)
-          sessionHistory.messages.push(botMessage);
-        }
-      });
+
+      if (botText) {
+        const botmessage = await self.saveBotMessage(botText);
+        sessionHistory.messages.push(botmessage);
+      }
 
       if (query.webhookPayload && query.webhookPayload.fields && query.webhookPayload.fields.cards) {
         const botCards = query.webhookPayload.fields.cards.listValue.values;
@@ -124,16 +121,17 @@ const createSession = async (userId) => {
 }
 
 const saveUserMessage = async (userText) => {
-  const message = await Message.create({
+  const message = new Message({
     speaker: 'me',
     msg: userText
   })
+  await message.save()
   return message
 }
 
 const saveBotMessage = async (botText, botQuickReplies, botCards) => {
   const message = new Message({
-    speaker: 'the MRS',
+    speaker: 'vchat',
     msg: botText,
     cards: botCards ? [] : null,
     quickReplies: botQuickReplies ? [] : null
