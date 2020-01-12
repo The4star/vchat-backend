@@ -146,7 +146,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/vchat-backend/dev/1577576138410-2019-12-28T23:35:38.410Z/vchat-backend.zip"
+          "S3Key": "serverless/vchat-backend/dev/1577582365582-2019-12-29T01:19:25.582Z/vchat-backend.zip"
         },
         "FunctionName": "vchat-backend-dev-app",
         "Handler": "server.server",
@@ -165,14 +165,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "AppLambdaVersionw8oJL4DwbVq5HZfeMU1zQ6qdKsntr7t6F8dK7UZJeyM": {
+    "AppLambdaVersionz3CvTELG3Xe2e2suv3bTfzsQbBp7xgtRLJJIHlexhY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "Rag6/3ZMrSfcUipa9b0v6j9RHMFwXB1ydZso2PX5OUA="
+        "CodeSha256": "PAdvLHplJn1cWNSN9GWP3T3S+yWZwpAcTf8FOJZ7Xko="
       }
     },
     "ApiGatewayRestApi": {
@@ -383,7 +383,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1577576121959": {
+    "ApiGatewayDeployment1577582355831": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -452,7 +452,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionw8oJL4DwbVq5HZfeMU1zQ6qdKsntr7t6F8dK7UZJeyM"
+        "Ref": "AppLambdaVersionz3CvTELG3Xe2e2suv3bTfzsQbBp7xgtRLJJIHlexhY"
       }
     },
     "ServiceEndpoint": {
